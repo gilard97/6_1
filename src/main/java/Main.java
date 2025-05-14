@@ -41,22 +41,29 @@ class Main {
     }
 
     public static int menu() {
-        while (true){
         System.out.println("Wciśnij:");
         System.out.println("1 - aby dodać studenta");
         System.out.println("2 - aby wypisać wszystkich studentów");
         System.out.println("3 - aby wyszukać studenta po imieniu");
         System.out.println("0 - aby wyjść z programu");
 
-            String input = scan.nextLine();
-            if(input.matches("\\d+")){
-                return Integer.parseInt(input);
+        int wybor = -1;
+        while(true){
+            try{
+                wybor = scan.nextInt();
+                if(wybor >= 0 && wybor <= 3)
+                    System.out.println("Błędny wybór: ");
+                    continue;
             }
-            else{
-                System.out.println("Błąd! Wpisz cyfrę!");
-            }
+            break;
         }
     }
+        catch(InputMismatchException e){
+            System.out.println("Błędny wybór: ");
+            scan.nextLine();
+        }
+            
+    
     public static String ReadDate() throws WrongDate{
         System.out.println("Podaj datę urodzenia DD-MM-YYYY");
         String date = scan.nextLine();
