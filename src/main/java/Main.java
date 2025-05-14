@@ -56,15 +56,26 @@ class Main {
 
         return name;
     }
-
+    
     public static void exercise1() throws IOException, WrongStudentName {
         var name = ReadName();
-        System.out.println("Podaj wiek: ");
-        var age = scan.nextInt();
+        int age;
+        while (true){
+            System.out.println("Podaj wiek(1-99): ");
+            if (scan.hasNextInt()) {
+                age = scan.nextInt();
+                if (age >= 1 && age <= 99) {
+                    break;
+                }
+                else {
+                    System.out.println("Wiek musi być w zakresie 1-99");
+                }
         scan.nextLine();
         System.out.println("Podaj datę urodzenia DD-MM-YYYY");
         var date = scan.nextLine();
         (new Service()).addStudent(new Student(name, age, date));
+    }
+    }
     }
 
     public static void exercise2() throws IOException {
